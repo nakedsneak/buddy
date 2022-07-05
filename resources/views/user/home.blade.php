@@ -17,14 +17,20 @@
 <div class='peginate'>
     {{ $event->links() }}
 </div>
-
+    
 //タイムライン　ゲーム変更
-<div class='chats'>
-    <div class='chat'>
-        @foreach ($chats as $chat)
-            <p class='body'>{{ $chat->text }}</p>
-        @endforeach
+<form action="/~" method="POST">
+    @csrf
+    <div class='chats'>
+        <div class='chat'>
+            @foreach ($chats as $chat)
+                <p class='body'>{{ $chat->text }}</p>
+            @endforeach
+        </div>
     </div>
-</div>
-
+    <textarea name="chat[text]"></textarea>
+    <div class="store">
+        <input type="submit" value='送信'/>
+    </div>
+</form>
 @endsection
